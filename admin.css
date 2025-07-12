@@ -196,8 +196,6 @@ input[type="text"]:focus {
   top: 15px;
   right: 15px;
 }
-
-/* NEW UTILITY CLASS */
 .is-hidden {
   display: none !important;
 }

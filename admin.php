@@ -1,5 +1,5 @@
 <?php
-session_start(); // MUST be the very first thing
+session_start();
 
 // --- CONFIGURATION ---
 $metadataFile = 'metadata.json';
@@ -14,7 +14,7 @@ $metadata = json_decode(@file_get_contents($metadataFile), true) ?? [];
 // Check for a message from the session (from the PRG pattern)
 $message = $_SESSION['admin_message'] ?? '';
 $message_type = $_SESSION['admin_message_type'] ?? 'success';
-unset($_SESSION['admin_message'], $_SESSION['admin_message_type']); // Clear it so it doesn't show again
+unset($_SESSION['admin_message'], $_SESSION['admin_message_type']);
 
 // --- SINGLE FORM PROCESSING ---
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -117,9 +117,7 @@ sort($unique_versions);
                             <td><?php echo htmlspecialchars($file); ?></td>
                             <td><input class="datalist-input" type="text" list="loaders-list" name="modpacks[<?php echo htmlspecialchars($file); ?>][loader]" value="<?php echo htmlspecialchars($metadata[$file]['loader'] ?? ''); ?>"></td>
                             <td><input class="datalist-input" type="text" list="versions-list" name="modpacks[<?php echo htmlspecialchars($file); ?>][version]" value="<?php echo htmlspecialchars($metadata[$file]['version'] ?? ''); ?>"></td>
-                            
-                            <!-- This table cell is the container for each row's uploader -->
-                            <td class="modlist-cell"> 
+                            <td class="modlist-cell">
                                 <input type="hidden" name="modpacks[<?php echo htmlspecialchars($file); ?>][modlist_file]" class="modlist-hidden-input" value="<?php echo htmlspecialchars($metadata[$file]['modlist_file'] ?? ''); ?>">
                                 <input type="file" name="modlist_uploads[<?php echo htmlspecialchars($file); ?>]" class="modlist-file-input is-hidden" accept=".html">
                                 <div class="drop-zone-wrapper">
@@ -148,62 +146,36 @@ sort($unique_versions);
 
     <script>
     document.addEventListener('DOMContentLoaded', () => {
-        // --- Logic for Modlist HTML Drop Zones (CORRECTED) ---
-        // We now iterate over each table cell (.modlist-cell) which acts as the scope for each uploader.
         document.querySelectorAll('.modlist-cell').forEach(cell => {
-            // Find elements *within* the current cell. This fixes the bug.
             const dropZone = cell.querySelector('.drop-zone');
             const fileInput = cell.querySelector('.modlist-file-input');
             const hiddenInput = cell.querySelector('.modlist-hidden-input');
             const fileDisplay = cell.querySelector('.file-display');
             const filenameSpan = fileDisplay.querySelector('.filename');
             const clearBtn = fileDisplay.querySelector('.clear-btn');
-            
             const showDropZone = () => { fileInput.value = ''; hiddenInput.value = ''; dropZone.classList.remove('is-hidden'); fileDisplay.classList.add('is-hidden'); };
             const showFileDisplay = (name) => { filenameSpan.textContent = name; dropZone.classList.add('is-hidden'); fileDisplay.classList.remove('is-hidden'); };
-            
             dropZone.addEventListener('click', () => fileInput.click());
             clearBtn.addEventListener('click', showDropZone);
             fileInput.addEventListener('change', () => { if (fileInput.files.length > 0) showFileDisplay(fileInput.files[0].name); });
             dropZone.addEventListener('dragover', (e) => { e.preventDefault(); dropZone.classList.add('drag-over'); });
             dropZone.addEventListener('dragleave', () => dropZone.classList.remove('drag-over'));
-            dropZone.addEventListener('drop', (e) => {
-                e.preventDefault();
-                dropZone.classList.remove('drag-over');
-                if (e.dataTransfer.files.length > 0) { fileInput.files = e.dataTransfer.files; fileInput.dispatchEvent(new Event('change')); }
-            });
+            dropZone.addEventListener('drop', (e) => { e.preventDefault(); dropZone.classList.remove('drag-over'); if (e.dataTransfer.files.length > 0) { fileInput.files = e.dataTransfer.files; fileInput.dispatchEvent(new Event('change')); } });
         });
 
-        // --- Logic for New Modpack Uploader (Unchanged, but robust) ---
         const uploadZone = document.getElementById('modpack-upload-zone');
         const uploadInput = document.getElementById('new-modpack-input');
         const defaultText = uploadZone.querySelector('.upload-default-text');
         const fileDisplayText = uploadZone.querySelector('.upload-file-display');
         const clearUploadBtn = document.getElementById('clear-upload-btn');
-        const handleUploadSelect = () => {
-            if (uploadInput.files.length > 0) {
-                fileDisplayText.textContent = `Selected: ${uploadInput.files[0].name}`;
-                defaultText.classList.add('is-hidden');
-                fileDisplayText.classList.remove('is-hidden');
-                clearUploadBtn.classList.remove('is-hidden');
-            }
-        };
-        const resetUploadZone = () => {
-            uploadInput.value = '';
-            defaultText.classList.remove('is-hidden');
-            fileDisplayText.classList.add('is-hidden');
-            clearUploadBtn.classList.add('is-hidden');
-        };
+        const handleUploadSelect = () => { if (uploadInput.files.length > 0) { fileDisplayText.textContent = `Selected: ${uploadInput.files[0].name}`; defaultText.classList.add('is-hidden'); fileDisplayText.classList.remove('is-hidden'); clearUploadBtn.classList.remove('is-hidden'); } };
+        const resetUploadZone = () => { uploadInput.value = ''; defaultText.classList.remove('is-hidden'); fileDisplayText.classList.add('is-hidden'); clearUploadBtn.classList.add('is-hidden'); };
         uploadZone.addEventListener('click', (e) => { if (e.target !== clearUploadBtn) uploadInput.click(); });
         clearUploadBtn.addEventListener('click', resetUploadZone);
         uploadInput.addEventListener('change', handleUploadSelect);
         uploadZone.addEventListener('dragover', (e) => { e.preventDefault(); uploadZone.classList.add('drag-over'); });
         uploadZone.addEventListener('dragleave', () => uploadZone.classList.remove('drag-over'));
-        uploadZone.addEventListener('drop', (e) => {
-            e.preventDefault();
-            uploadZone.classList.remove('drag-over');
-            if (e.dataTransfer.files.length > 0) { uploadInput.files = e.dataTransfer.files; handleUploadSelect(); }
-        });
+        uploadZone.addEventListener('drop', (e) => { e.preventDefault(); uploadZone.classList.remove('drag-over'); if (e.dataTransfer.files.length > 0) { uploadInput.files = e.dataTransfer.files; handleUploadSelect(); } });
     });
     </script>
 </body>
