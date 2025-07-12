@@ -1,0 +1,203 @@
+:root {
+  --ctp-rosewater: #f5e0dc;
+  --ctp-flamingo: #f2cdcd;
+  --ctp-pink: #f5c2e7;
+  --ctp-mauve: #cba6f7;
+  --ctp-red: #f38ba8;
+  --ctp-maroon: #eba0ac;
+  --ctp-peach: #fab387;
+  --ctp-yellow: #f9e2af;
+  --ctp-green: #a6e3a1;
+  --ctp-teal: #94e2d5;
+  --ctp-sky: #89dceb;
+  --ctp-sapphire: #74c7ec;
+  --ctp-blue: #89b4fa;
+  --ctp-lavender: #b4befe;
+  --ctp-text: #cdd6f4;
+  --ctp-subtext1: #bac2de;
+  --ctp-subtext0: #a6adc8;
+  --ctp-overlay2: #9399b2;
+  --ctp-overlay1: #7f849c;
+  --ctp-overlay0: #6c7086;
+  --ctp-surface2: #585b70;
+  --ctp-surface1: #45475a;
+  --ctp-surface0: #313244;
+  --ctp-base: #1e1e2e;
+  --ctp-mantle: #181825;
+  --ctp-crust: #11111b;
+}
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  background-color: var(--ctp-crust);
+  color: var(--ctp-text);
+  font-family: "Inter", sans-serif;
+}
+.container {
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+h1,
+h2 {
+  color: var(--ctp-text);
+  margin-bottom: 10px;
+}
+h2 {
+  font-size: 1.2rem;
+  color: var(--ctp-subtext0);
+  border-bottom: 1px solid var(--ctp-surface0);
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+}
+.back-link {
+  color: var(--ctp-blue);
+  text-decoration: none;
+  display: inline-block;
+  margin-bottom: 20px;
+}
+.back-link:hover {
+  text-decoration: underline;
+}
+.message {
+  background-color: var(--ctp-green);
+  color: var(--ctp-base);
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  font-weight: 500;
+}
+.message.error {
+  background-color: var(--ctp-red);
+}
+.card {
+  background-color: var(--ctp-base);
+  border-radius: 16px;
+  padding: 25px;
+  border: 1px solid var(--ctp-surface0);
+  margin-bottom: 30px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+th,
+td {
+  padding: 15px;
+  text-align: left;
+  border-bottom: 1px solid var(--ctp-surface0);
+  vertical-align: middle;
+}
+th {
+  color: var(--ctp-subtext0);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+td:first-child {
+  font-weight: 500;
+  color: var(--ctp-subtext1);
+}
+input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  background: var(--ctp-mantle);
+  border: 1px solid var(--ctp-surface1);
+  color: var(--ctp-text);
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+input[type="text"]:focus {
+  outline: none;
+  border-color: var(--ctp-blue);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--ctp-blue) 25%, transparent);
+}
+.submit-btn {
+  background: var(--ctp-green);
+  color: var(--ctp-base);
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  float: right;
+  margin-top: 20px;
+  transition: background-color 0.2s ease;
+}
+.submit-btn:hover {
+  background-color: var(--ctp-text);
+}
+.datalist-input {
+  width: 100%;
+}
+.drop-zone {
+  border: 2px dashed var(--ctp-surface1);
+  border-radius: 8px;
+  padding: 20px;
+  text-align: center;
+  color: var(--ctp-subtext0);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.drop-zone.drag-over {
+  border-color: var(--ctp-blue);
+  background-color: var(--ctp-surface0);
+  color: var(--ctp-blue);
+}
+.file-display {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  background-color: var(--ctp-surface0);
+  padding: 10px;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  color: var(--ctp-sky);
+  position: relative;
+}
+.clear-btn {
+  background-color: var(--ctp-red);
+  color: var(--ctp-base);
+  border: none;
+  border-radius: 50%;
+  width: 22px;
+  height: 22px;
+  font-weight: bold;
+  cursor: pointer;
+  line-height: 22px;
+  text-align: center;
+}
+#modpack-upload-zone {
+  border: 3px dashed var(--ctp-surface1);
+  border-radius: 12px;
+  padding: 40px;
+  text-align: center;
+  color: var(--ctp-subtext0);
+  font-size: 1.2rem;
+  transition: all 0.3s ease;
+  position: relative;
+}
+#modpack-upload-zone.drag-over {
+  border-color: var(--ctp-green);
+  background-color: color-mix(in srgb, var(--ctp-green) 10%, transparent);
+  color: var(--ctp-green);
+  transform: scale(1.02);
+}
+.upload-file-display {
+  color: var(--ctp-peach);
+  font-weight: 500;
+}
+#clear-upload-btn {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+}
+
+/* NEW UTILITY CLASS */
+.is-hidden {
+  display: none !important;
+}
