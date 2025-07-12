@@ -1,0 +1,17 @@
+{
+    ".gitkeep": {
+        "loader": "",
+        "version": "",
+        "modlist_file": ""
+    },
+    "1.20.1 Exponents.mrpack": {
+        "loader": "Forge",
+        "version": "1.20.1",
+        "modlist_file": "1.20.1 Exponents.html"
+    },
+    "1.21.1 Roots.mrpack": {
+        "loader": "NeoForge",
+        "version": "1.21.1",
+        "modlist_file": "1.21.1 Roots.html"
+    }
+}
