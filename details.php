@@ -138,8 +138,7 @@ $pageTitle = str_replace('_', ' ', pathinfo($pack_filename, PATHINFO_FILENAME));
                 </div>
                 <div class="footer-column">
                     <h3>mrpack-depot</h3>
-                    <p class="description">This site is built and maintained by chisato04, with heavy inspiration from
-                        the Catppuccin theme.</p>
+                    <p class="description">This site is built and maintained by chisato04, inspired by the Catppuccin "Ports" page.</p>
                     <p class="copyright">© 2025, chisato04. Licensed under MIT.</p>
                 </div>
             </div>
