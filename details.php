@@ -62,7 +62,7 @@ $pageTitle = str_replace('_', ' ', pathinfo($pack_filename, PATHINFO_FILENAME));
 <body>
     <header class="site-header">
         <div class="header-container">
-            <a href="index.php" class="logo">
+            <a href="../index.php" class="logo">
                 <img src="images/capitano.png" alt="Site Logo">
             </a>
             <nav class="main-nav">

@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
+  // --- THEME SWITCHER LOGIC ---
   const themeSwitchers = document.querySelectorAll(".theme-switcher");
   const html = document.documentElement;
 
@@ -9,7 +10,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     html.dataset.theme = theme;
     localStorage.setItem("mrpack-depot-theme", theme);
-
     themeSwitchers.forEach((switcher) => {
       if (switcher.value !== theme) {
         switcher.value = theme;
@@ -26,8 +26,10 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
+  // --- HOMEPAGE LOGIC ---
   const gridContainer = document.getElementById("gridContainer");
   if (gridContainer) {
+    // --- Card Click Logic ---
     const clickableCards = gridContainer.querySelectorAll(".card");
     clickableCards.forEach((card) => {
       card.addEventListener("click", (event) => {
@@ -49,8 +51,8 @@ document.addEventListener("DOMContentLoaded", () => {
     function applyFilters() {
       clickableCards.forEach((card) => {
         const title = card.querySelector("h3").textContent.toLowerCase();
-        const loader = card.dataset.loader.toLowerCase();
-        const version = card.dataset.version.toLowerCase();
+        const loader = card.dataset.loader.toLowerCase(); // Convert card's loader to lowercase
+        const version = card.dataset.version.toLowerCase(); // Convert card's version to lowercase
 
         const searchMatch =
           activeFilters.search === "" || title.includes(activeFilters.search);
@@ -78,7 +80,9 @@ document.addEventListener("DOMContentLoaded", () => {
       filterButtons.forEach((button) => {
         button.addEventListener("click", () => {
           const group = button.dataset.filterGroup;
-          const filterValue = button.dataset.filter;
+
+          const filterValue = button.dataset.filter.toLowerCase(); // Also convert the button's filter value to lowercase
+
           activeFilters[group] = filterValue;
           document
             .querySelectorAll(`.filter-btn[data-filter-group="${group}"]`)

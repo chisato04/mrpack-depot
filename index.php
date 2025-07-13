@@ -52,7 +52,7 @@ sort($unique_versions);
 <body>
     <header class="site-header">
         <div class="header-container">
-            <a href="index.php" class="logo">
+            <a href="../index.php" class="logo">
                 <img src="images/capitano.png" alt="Site Logo">
             </a>
             <nav class="main-nav">
@@ -155,10 +155,10 @@ sort($unique_versions);
                     <div class="theme-selector">
                         <label for="theme-switcher">Theme</label>
                         <select class="theme-switcher" id="theme-switcher">
-                            <option value="mocha">🌿 Mocha</option>
-                            <option value="macchiato">🌺 Macchiato</option>
-                            <option value="frappe">🪴 Frappé</option>
-                            <option value="latte">🌻 Latte</option>
+                            <option value="mocha">Mocha</option>
+                            <option value="macchiato">Macchiato</option>
+                            <option value="frappe">Frappé</option>
+                            <option value="latte">Latte</option>
                         </select>
                     </div>
                 </div>
