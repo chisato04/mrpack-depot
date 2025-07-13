@@ -149,59 +149,25 @@ sort($unique_versions);
                 </div>
                 <div class="footer-column">
                     <h3>mrpack-depot</h3>
-                    <p class="description">This site is built and maintained by chisato04, inspired by the Catppuccin "Ports" page.</p>
+                    <p class="description">This site is built and maintained by chisato04, inspired by the Catppuccin
+                        "Ports" page.</p>
                     <p class="copyright">© 2025, chisato04. Licensed under MIT.</p>
+                    <div class="theme-selector">
+                        <label for="theme-switcher">Theme</label>
+                        <select class="theme-switcher" id="theme-switcher">
+                            <option value="mocha">🌿 Mocha</option>
+                            <option value="macchiato">🌺 Macchiato</option>
+                            <option value="frappe">🪴 Frappé</option>
+                            <option value="latte">🌻 Latte</option>
+                        </select>
+                    </div>
                 </div>
             </div>
         </div>
     </footer>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const clickableCards = document.querySelectorAll('.card');
-            clickableCards.forEach(card => {
-                card.addEventListener('click', (event) => {
-                    if (event.target.closest('.card-download-btn')) { return; }
-                    const url = event.currentTarget.dataset.href;
-                    if (url) { window.location.href = url; }
-                });
-            });
+    <script src="main.js"></script>
 
-            const searchInput = document.getElementById('searchInput');
-            const cards = Array.from(document.getElementsByClassName('card'));
-            const filterButtons = document.querySelectorAll('.filter-btn');
-            let activeFilters = { loader: 'all', version: 'all', search: '' };
-            function applyFilters() {
-                cards.forEach(card => {
-                    const title = card.querySelector('h3').textContent.toLowerCase();
-                    const loader = card.dataset.loader;
-                    const version = card.dataset.version;
-                    const searchMatch = title.includes(activeFilters.search);
-                    const loaderMatch = activeFilters.loader === 'all' || loader === activeFilters.loader;
-                    const versionMatch = activeFilters.version === 'all' || version === activeFilters.version;
-                    if (searchMatch && loaderMatch && versionMatch) {
-                        card.style.display = 'flex';
-                    } else {
-                        card.style.display = 'none';
-                    }
-                });
-            }
-            searchInput.addEventListener('input', (e) => {
-                activeFilters.search = e.target.value.toLowerCase();
-                applyFilters();
-            });
-            filterButtons.forEach(button => {
-                button.addEventListener('click', () => {
-                    const group = button.dataset.filterGroup;
-                    const filterValue = button.dataset.filter;
-                    activeFilters[group] = filterValue;
-                    document.querySelectorAll(`.filter-btn[data-filter-group="${group}"]`).forEach(btn => btn.classList.remove('active'));
-                    button.classList.add('active');
-                    applyFilters();
-                });
-            });
-        });
-    </script>
 </body>
 
 </html>

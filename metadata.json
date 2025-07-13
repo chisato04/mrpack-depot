@@ -1,13 +1,28 @@
 {
-    ".gitkeep": {
-        "loader": "",
-        "version": "",
-        "modlist_file": ""
+    "1.20.1 Additions.mrpack": {
+        "loader": "Fabric",
+        "version": "1.20.1",
+        "modlist_file": "1.20.1 Additions.html"
+    },
+    "1.20.1 Division.mrpack": {
+        "loader": "Fabric",
+        "version": "1.20.1",
+        "modlist_file": "1.20.1 Division.html"
     },
     "1.20.1 Exponents.mrpack": {
         "loader": "Forge",
         "version": "1.20.1",
         "modlist_file": "1.20.1 Exponents.html"
+    },
+    "1.20.1 Subtraction.mrpack": {
+        "loader": "Fabric",
+        "version": "1.20.1",
+        "modlist_file": "1.20.1 Subtraction.html"
+    },
+    "1.21.1 Multiplication.mrpack": {
+        "loader": "NeoForge",
+        "version": "1.21.1",
+        "modlist_file": "1.21.1 Multiplication.html"
     },
     "1.21.1 Roots.mrpack": {
         "loader": "NeoForge",

@@ -138,12 +138,23 @@ $pageTitle = str_replace('_', ' ', pathinfo($pack_filename, PATHINFO_FILENAME));
                 </div>
                 <div class="footer-column">
                     <h3>mrpack-depot</h3>
-                    <p class="description">This site is built and maintained by chisato04, inspired by the Catppuccin "Ports" page.</p>
+                    <p class="description">This site is built and maintained by chisato04, inspired by the Catppuccin
+                        "Ports" page.</p>
                     <p class="copyright">© 2025, chisato04. Licensed under MIT.</p>
+                    <div class="theme-selector">
+                        <label for="theme-switcher">Theme</label>
+                        <select class="theme-switcher" id="theme-switcher">
+                            <option value="mocha">🌿 Mocha</option>
+                            <option value="macchiato">🌺 Macchiato</option>
+                            <option value="frappe">🪴 Frappé</option>
+                            <option value="latte">🌻 Latte</option>
+                        </select>
+                    </div>
                 </div>
             </div>
         </div>
     </footer>
+    <script src="main.js"></script>
 </body>
 
 </html>
