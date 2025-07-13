@@ -1,3 +1,8 @@
+<h3 align="center">
+	<img src="https://github.com/chisato04/mrpack-depot/blob/main/images/capitano.png" width="100" alt="Logo"/><br/>
+	chisato04
+</h3>
+
 # mrpack-depot
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
@@ -6,7 +11,7 @@ A simple, self-hosted, single-file PHP application for browsing and managing a p
 
 ---
 
-## ✨ Features
+##  Features
 
 - **Modern UI:** A clean, responsive interface inspired by the Catppuccin "Ports" page.
 - **Dynamic Filtering:** Instantly filter modpacks by mod loader and Minecraft version.
@@ -18,12 +23,12 @@ A simple, self-hosted, single-file PHP application for browsing and managing a p
   - Consistent metadata management with autocomplete suggestions.
 - **Lightweight & Simple:** No database required. Runs on a standard PHP server using a simple `metadata.json` file for storage.
 
-## 💻 Tech Stack
+##  Tech Stack
 
 - **Backend:** PHP (no external libraries required)
 - **Frontend:** Plain HTML, CSS, and JavaScript (no frameworks)
 
-## 🚀 Requirements & Installation
+##  Requirements & Installation
 
 You'll need a local or remote web server with PHP support.
 
@@ -49,7 +54,7 @@ You'll need a local or remote web server with PHP support.
     - Navigate to your project's URL (e.g., `http://your-repo-name.test`).
     - Access the admin panel at `http://your-repo-name.test/admin.php`.
 
-## 🛠️ Usage
+##  Usage
 
 1.  Go to the **Admin Panel** (`/admin.php`).
 2.  Use the "Upload New Modpack" section to add your `.mrpack` files.
@@ -59,11 +64,11 @@ You'll need a local or remote web server with PHP support.
 6.  Click **"Save All Changes"**.
 7.  Go back to the main site to see your new modpack in the browser!
 
-## 📄 License
+##  License
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
-## 🙏 Acknowledgments
+##  Acknowledgments
 
 -   Theme and color palette heavily inspired by the amazing [Catppuccin](https://github.com/catppuccin/catppuccin) team.
 -   Font used is [Inter](https://fonts.google.com/specimen/Inter).
