@@ -94,3 +94,29 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 });
+
+// --- DETAILS PAGE TAB LOGIC ---
+const tabContainer = document.querySelector(".tab-container");
+if (tabContainer) {
+  const tabButtons = tabContainer.querySelectorAll(".tab-btn");
+  const tabContents = tabContainer.querySelectorAll(".tab-content");
+
+  tabButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const tabId = button.dataset.tab;
+
+      // Update button active state
+      tabButtons.forEach((btn) => btn.classList.remove("active"));
+      button.classList.add("active");
+
+      // Update content active state
+      tabContents.forEach((content) => {
+        if (content.id === tabId) {
+          content.classList.add("active");
+        } else {
+          content.classList.remove("active");
+        }
+      });
+    });
+  });
+}

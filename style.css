@@ -568,6 +568,54 @@ header p {
   box-shadow: 0 0 0 3px color-mix(in srgb, var(--mauve) 25%, transparent);
 }
 
+
+/* --- TAB STYLES --- */
+.tab-container { padding: 30px; }
+.tab-nav {
+    display: flex;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 30px;
+}
+.tab-btn {
+    background: none; border: none;
+    color: var(--subtext-0); font-size: 1rem; font-weight: 500;
+    padding: 10px 20px; cursor: pointer;
+    position: relative;
+    border-bottom: 3px solid transparent;
+    transition: color 0.2s ease;
+}
+.tab-btn:hover { color: var(--text); }
+.tab-btn.active { color: var(--peach); border-bottom-color: var(--peach); }
+
+.tab-content { display: none; }
+.tab-content.active { display: block; animation: fadeIn 0.5s ease; }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+.placeholder-text { color: var(--subtext-0); text-align: center; padding: 40px; }
+
+/* Styles for the Setup & Notes tab */
+#setup-notes h3 {
+    font-size: 1.2rem;
+    color: var(--teal);
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--surface-0);
+}
+#setup-notes h3:not(:first-child) { margin-top: 30px; }
+#setup-notes pre {
+    background-color: var(--mantle);
+    border: 1px solid var(--surface-0);
+    padding: 15px;
+    border-radius: 8px;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    color: var(--subtext-1);
+}
+#setup-notes .notes-content {
+    line-height: 1.7;
+    color: var(--subtext-1);
+}
+
 /* --- RESPONSIVE STYLES --- */
 @media (max-width: 900px) {
   .container,
