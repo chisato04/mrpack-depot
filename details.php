@@ -1,16 +1,12 @@
 <?php
-// --- CONFIGURATION ---
+// ... (Your existing PHP data loading at the top remains the same)
 $metadataFile = 'metadata.json';
 $modpacksDir = 'modpacks';
 $modlistsDir = 'modlists';
-
-// --- VALIDATION ---
 if (!isset($_GET['pack'])) {
     die("No modpack specified.");
 }
 $pack_filename = basename($_GET['pack']);
-
-// --- DATA LOADING ---
 $metadata = file_exists($metadataFile) ? json_decode(file_get_contents($metadataFile), true) : [];
 if (!isset($metadata[$pack_filename])) {
     die("Modpack not found in metadata.");
@@ -20,8 +16,6 @@ $modlist_html_file = $modlistsDir . '/' . $pack_meta['modlist_file'];
 if (empty($pack_meta['modlist_file']) || !file_exists($modlist_html_file)) {
     die("Modlist file not found.");
 }
-
-// --- HTML PARSING ---
 $mod_list = [];
 $doc = new DOMDocument();
 @$doc->loadHTMLFile($modlist_html_file);
@@ -60,38 +54,22 @@ $pageTitle = str_replace('_', ' ', pathinfo($pack_filename, PATHINFO_FILENAME));
 </head>
 
 <body>
-    <header class="site-header">
-        <div class="header-container">
-            <a href="../index.php" class="logo">
-                <img src="images/capitano.png" alt="Site Logo">
-            </a>
-            <nav class="main-nav">
-                <ul>
-                    <li><a href="index.php" class="active">Packs</a></li>
-                    <li><a href="admin.php">Admin</a></li>
-                    <li><a href="https://github.com/chisato04/mrpack-depot" target="_blank"
-                            rel="noopener noreferrer">GitHub</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+    <?php require '_header.php'; ?>
 
     <main class="site-main">
         <div class="container">
             <div class="details-container">
                 <header class="details-header">
-                    <div>
-                        <a href="index.php" class="back-link">← Back to All Packs</a>
+                    <div><a href="index.php" class="back-link">← Back to All Packs</a>
                         <h1><?php echo htmlspecialchars($pageTitle); ?></h1>
-                        <div class="tags">
-                            <span class="tag tag-loader"><?php echo htmlspecialchars($pack_meta['loader']); ?></span>
-                            <span class="tag tag-version"><?php echo htmlspecialchars($pack_meta['version']); ?></span>
+                        <div class="tags"><span
+                                class="tag tag-loader"><?php echo htmlspecialchars($pack_meta['loader']); ?></span><span
+                                class="tag tag-version"><?php echo htmlspecialchars($pack_meta['version']); ?></span>
                         </div>
                     </div>
                     <a href="<?php echo htmlspecialchars($modpacksDir . '/' . $pack_filename); ?>" class="download-btn"
                         download>Download Pack</a>
                 </header>
-
                 <div class="mod-list-card">
                     <h2>Mod List (<?php echo count($mod_list); ?> total)</h2>
                     <div class="table-wrapper">
@@ -102,15 +80,13 @@ $pageTitle = str_replace('_', ' ', pathinfo($pack_filename, PATHINFO_FILENAME));
                                     <th>Details</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                <?php foreach ($mod_list as $mod): ?>
+                            <tbody><?php foreach ($mod_list as $mod): ?>
                                     <tr>
                                         <td><a href="<?php echo htmlspecialchars($mod['url']); ?>" target="_blank"
                                                 rel="noopener noreferrer"><?php echo htmlspecialchars($mod['name']); ?></a>
                                         </td>
                                         <td><?php echo htmlspecialchars($mod['info']); ?></td>
-                                    </tr>
-                                <?php endforeach; ?>
+                                    </tr><?php endforeach; ?>
                             </tbody>
                         </table>
                     </div>
@@ -119,42 +95,7 @@ $pageTitle = str_replace('_', ' ', pathinfo($pack_filename, PATHINFO_FILENAME));
         </div>
     </main>
 
-    <footer class="site-footer">
-        <div class="footer-container">
-            <div class="footer-grid">
-                <div class="footer-column">
-                    <h3>Project</h3>
-                    <ul>
-                        <li><a href="index.php">Packs</a></li>
-                        <li><a href="admin.php">Admin Panel</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h3>Social</h3>
-                    <ul>
-                        <li><a href="https://github.com/chisato04/mrpack-depot" target="_blank"
-                                rel="noopener noreferrer">GitHub</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h3>mrpack-depot</h3>
-                    <p class="description">This site is built and maintained by chisato04, inspired by the Catppuccin
-                        "Ports" page.</p>
-                    <p class="copyright">© 2025, chisato04. Licensed under MIT.</p>
-                    <div class="theme-selector">
-                        <label for="theme-switcher">Theme</label>
-                        <select class="theme-switcher" id="theme-switcher">
-                            <option value="mocha">🌿 Mocha</option>
-                            <option value="macchiato">🌺 Macchiato</option>
-                            <option value="frappe">🪴 Frappé</option>
-                            <option value="latte">🌻 Latte</option>
-                        </select>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
-    <script src="main.js"></script>
+    <?php require '_footer.php'; ?>
 </body>
 
 </html>
